@@ -5,7 +5,13 @@ public class User {
     private String nameUser;
 
     public User(int idUser, String nameUser) {
+        super();
         this.idUser = idUser;
+        this.nameUser = nameUser;
+    }
+
+    public User(String nameUser) {
+        super();
         this.nameUser = nameUser;
     }
 
