@@ -1,13 +1,27 @@
 package pojo;
 
-import java.util.ArrayList;
-
-public class Shot {
+public class Bet {
     private int idBet;
-    private int idUser;
-    private ArrayList
+    private User user;
 
-    public Shot() {
+    public Bet(int idBet, User user) {
+        this.idBet = idBet;
+        this.user = user;
+    }
 
+    public int getIdBet() {
+        return idBet;
+    }
+
+    public void setIdBet(int idBet) {
+        this.idBet = idBet;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
