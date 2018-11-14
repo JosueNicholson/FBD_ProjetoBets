@@ -15,7 +15,7 @@ public class UserDao {
 	public UserDao() {}
 	
 	public boolean addUser(User user) {
-		String sql = "INSERT INTO user(name) VALUES(?)";
+		String sql = "INSERT INTO USERS (NAMEUSER) VALUES(?)";
 		this.connection = new ConnectionFactory().getConnection();
 		
 		try {
@@ -47,7 +47,7 @@ public class UserDao {
 	}
 	
 	public boolean deleteUser(int id) {
-		String sql = "DELETE FROM user WHERE idUser = ?";
+		String sql = "DELETE FROM USERS WHERE IDUSER = ?";
 		this.connection = new ConnectionFactory().getConnection();
 		
 		try {
@@ -76,13 +76,12 @@ public class UserDao {
 	}
 	
 	public ArrayList<User> getListUsers(){
-		String sql = "SELECT * FROM user";
+		String sql = "SELECT * FROM USERS";
 		ArrayList<User> listUsers = new ArrayList<User>();
 		this.connection = new ConnectionFactory().getConnection();
 		
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
-			
 			ResultSet rs = stmt.executeQuery();
 			
 			while(rs.next()) {
