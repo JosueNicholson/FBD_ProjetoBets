@@ -2,12 +2,12 @@ package pojo;
 
 public class Team {
     private int idTeam;
-    private String name;
+    private String nameTeam;
     private String shortName;
 
-    public Team(int idTeam, String name, String shortName) {
+    public Team(int idTeam, String nameTeam, String shortName) {
         this.idTeam = idTeam;
-        this.name = name;
+        this.nameTeam = nameTeam;
         this.shortName = shortName;
     }
 
@@ -19,12 +19,12 @@ public class Team {
         this.idTeam = idTeam;
     }
 
-    public String getName() {
-        return name;
+    public String getNameTeam() {
+        return nameTeam;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNameTeam(String nameTeam) {
+        this.nameTeam = nameTeam;
     }
 
     public String getShortName() {
