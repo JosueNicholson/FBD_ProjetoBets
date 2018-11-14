@@ -10,6 +10,10 @@ public class Team {
         this.nameTeam = nameTeam;
         this.shortName = shortName;
     }
+    public Team(String nameTeam, String shortName) {
+        this.nameTeam = nameTeam;
+        this.shortName = shortName;
+    } 
 
     public int getIdTeam() {
         return idTeam;

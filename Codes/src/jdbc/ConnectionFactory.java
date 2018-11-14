@@ -6,9 +6,9 @@ import java.sql.SQLException;
 
 public class ConnectionFactory {
     private final String ip = "localhost";
-    private final Integer port = 5432;
+    private final Integer port = 5435;
     private final String user = "postgres";
-    private final String password = "";
+    private final String password = "Nicholson";
     private final String database = "Bets";
 
     public Connection getConnection() {

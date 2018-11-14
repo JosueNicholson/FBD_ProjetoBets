@@ -15,7 +15,7 @@ public class TeamDao {
 	public TeamDao() {}
 	
 	public boolean addTeam(Team team) {
-		String sql = "INSERT INTO USERS (NAMETEAM, SHORTNAME) VALUES(?,?)";
+		String sql = "INSERT INTO TEAMS (NAMETEAM, SHORTNAME) VALUES(?,?)";
 		this.connection = new ConnectionFactory().getConnection();
 		
 		try {
