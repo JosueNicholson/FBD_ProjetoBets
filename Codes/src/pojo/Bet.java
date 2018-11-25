@@ -8,6 +8,9 @@ public class Bet {
         this.idBet = idBet;
         this.user = user;
     }
+    public Bet(User user) {
+    	this.user = user;
+    }
 
     public int getIdBet() {
         return idBet;

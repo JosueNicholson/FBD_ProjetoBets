@@ -65,9 +65,9 @@ public class TeamMenu {
     	}
     }
     public void listTeamsPrompt() {
-    	ArrayList<Team> listTeams = new TeamDao().getListTeams();
-        if (listTeams.size() == 0) {
-            System.out.println("Empty");
+    	ArrayList<Team> listTeams = teamController.listTeams();
+        if (listTeams.isEmpty()) {
+            System.out.println("Não existem times cadastrados");
         }
         else{
         	System.out.println("Lista de times cadastrados:");

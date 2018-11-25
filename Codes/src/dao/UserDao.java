@@ -56,6 +56,7 @@ public class UserDao {
 			
 			stmt.setInt(1, id);
 			int rowsAffected = stmt.executeUpdate();
+			stmt.close();
 			
 			if(rowsAffected > 0) {
 				return true;
@@ -106,5 +107,31 @@ public class UserDao {
 			
 		}
 		return listUsers;
+	}
+	public User getUserById(int idUser) {
+		String sql = "SELECT * FROM USER WHERE IDUSER = ?";
+		this.connection = new ConnectionFactory().getConnection();
+		
+		try {
+			PreparedStatement stmt = connection.prepareStatement(sql);
+			stmt.setInt(1, idUser);
+			
+			ResultSet rs = stmt.executeQuery();
+			String nameUser = rs.getString("nameUser");
+			User user = new User(idUser, nameUser);
+			return user;
+			
+		}catch(SQLException e) {
+			System.err.println(e.getMessage());
+		}finally {
+			
+			try {
+				this.connection.close();
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+			
+		}
+		return null;
 	}
 }

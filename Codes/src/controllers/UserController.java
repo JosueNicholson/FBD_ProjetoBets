@@ -21,4 +21,8 @@ public class UserController {
     public ArrayList<User> listUsers(){
         return new UserDao().getListUsers();
     }
+    public User getUserById(int id) {
+    	User user = new UserDao().getUserById(id);
+    	return user;
+    }
 }
