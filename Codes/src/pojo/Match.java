@@ -6,15 +6,22 @@ public class Match {
     private int idMatch;
     private Team homeTeam;
     private Team awayTeam;
-    private LocalDate date;
+    private String status;
     private int winner;
 
-    public Match(int idMatch, Team homeTeam, Team awayTeam, int winner, LocalDate date) {
+    public Match(int idMatch, Team homeTeam, Team awayTeam, int winner, String status) {
         this.idMatch = idMatch;
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
         this.winner = winner;
-        this.date = date;
+        this.status = status;
+    }
+
+    public Match(Team homeTeam, Team awayTeam, int winner, String status) {
+        this.homeTeam = homeTeam;
+        this.awayTeam = awayTeam;
+        this.winner = winner;
+        this.status = status;
     }
 
     public int getIdMatch() {
@@ -41,12 +48,12 @@ public class Match {
         this.awayTeam = awayTeam;
     }
 
-    public LocalDate getDate() {
-        return date;
+    public String getStatus() {
+        return this.status;
     }
 
-    public void setDate(LocalDate date) {
-        this.date = date;
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public int getWinner() {

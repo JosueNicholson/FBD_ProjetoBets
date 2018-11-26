@@ -109,4 +109,43 @@ public class TeamDao {
 		}
 		return listTeams;
 	}
+
+    public Team getTeamById(int id) {
+        String sql = "SELECT * FROM TEAMS WHERE IDTEAM = ?";
+        this.connection = new ConnectionFactory().getConnection();
+
+        try {
+
+            PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, id);
+
+            ResultSet rs = stmt.executeQuery();
+
+            Team team;
+
+            if (rs.next()) {
+                int idTeam = rs.getInt("idTeam");
+                String name = rs.getString("nameTeam");
+                String shortname = rs.getString("shortName");
+
+                team = new Team(idTeam, name, shortname);
+            } else {
+                team = null;
+            }
+
+            stmt.close();
+            return team;
+        }catch(SQLException e) {
+            System.err.println(e.getMessage());
+        }finally {
+
+            try {
+                this.connection.close();
+            }catch(SQLException e) {
+                e.printStackTrace();
+            }
+
+        }
+        return null;
+    }
 }

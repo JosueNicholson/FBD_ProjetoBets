@@ -13,10 +13,16 @@ public class TeamController {
 		Team team = new Team(nameTeam, shortName);
 		return new TeamDao().addTeam(team);
 	}
+
 	public boolean deleteTeam(int id) {
 		return new TeamDao().deleteTeam(id);
 	}
+
 	public ArrayList<Team> listTeams(){
 		return new TeamDao().getListTeams();
 	}
+
+	public Team getTeamById(int idTeam) {
+	    return new TeamDao().getTeamById(idTeam);
+    }
 }
