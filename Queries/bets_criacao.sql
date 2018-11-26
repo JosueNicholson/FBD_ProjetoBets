@@ -151,10 +151,11 @@ BEGIN
 	ELSIF NEW.STATUS='Finalizada' AND NEW.WINNER=-1 THEN
 		RAISE EXCEPTION 'Partida "Finalizada" Só Aceita Campo "Winner" Diferente de -1';
 		RETURN NULL;
-	ELSIF NEW.STATUS='Finalizada' AND (NEW.WINNER<>0 OR NEW.WINNER<>1 OR NEW.WINNER<>2) THEN
+	ELSIF NEW.STATUS='Finalizada' AND NEW.WINNER BETWEEN 0 AND 2 THEN
+		RETURN NEW;
+	ELSE 
 		RAISE EXCEPTION 'Partida "Finalizada" Só Aceita Campo "Winner" Igual a 0, 1 ou 2';
 		RETURN NULL;
-	ELSE RETURN NEW;
 	END IF;
 END;
 $$
@@ -198,7 +199,7 @@ BEGIN
 END;
 $$
 LANGUAGE PLPGSQL;
--- SELECT * FROM GETALLMATCHES();
+SELECT * FROM GETALLMATCHES() GAM, SHOTS S WHERE S.IDBET=3 AND S.IDMATCH=GAM.IDMATCH;
 --//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//--//
 CREATE OR REPLACE FUNCTION GETMATCHBYTEAMID(IDTEAM_PARAM INT) RETURNS TABLE (
 	IDMATCH INTEGER,
