@@ -45,6 +45,40 @@ public class UserDao {
 		}
 		return false;
 	}
+
+	public boolean updateUser(User user) {
+		String sql = "UPDATE USERS SET IDUSER=?, NAMEUSER=? WHERE IDUSER=?";
+		this.connection = new ConnectionFactory().getConnection();
+
+		try {
+
+			PreparedStatement stmt = connection.prepareStatement(sql);
+
+			stmt.setInt(1, user.getIdUser());
+			stmt.setString(2, user.getNameUser());
+			stmt.setInt(3, user.getIdUser());
+
+			int rowsAffected = stmt.executeUpdate();
+			stmt.close();
+
+			if(rowsAffected>0) {
+				return true;
+			}
+			return false;
+
+		}catch(SQLException e) {
+			System.err.println(e.getMessage());
+		}finally {
+
+			try {
+				this.connection.close();
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+
+		}
+		return false;
+	}
 	
 	public boolean deleteUser(int id) {
 		String sql = "DELETE FROM USERS WHERE IDUSER = ?";

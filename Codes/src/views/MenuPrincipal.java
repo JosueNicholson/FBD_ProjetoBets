@@ -16,10 +16,11 @@ public class MenuPrincipal {
     }
 
     public void startMenu() {
+
+
         boolean end = false;
         Scanner input = new Scanner(System.in);
-        int num;
-
+        int num = -1;
 
         while(!end) {
             System.out.println("Bem Vindo ao Super Bolão da Copa");
@@ -30,18 +31,22 @@ public class MenuPrincipal {
             System.out.println("4- Gerenciar Apostas");
             System.out.println("0- Finalizar Sistema");
             System.out.print(">> ");
-            num = input.nextInt();
 
-            switch (num) {
-                case 1: userMenu.userMenu(); break;
-                case 2: teamMenu.teamMenu(); break;
-                case 3: matchMenu.matchMenu(); break;
-                case 4: betMenu.betMenu(); break;
-                case 0: end = !end; break;
-                default: break;
+            try {
+                num = Integer.parseInt(input.nextLine());
+            } catch (NumberFormatException e) {
+                System.err.println("Digite somente números!");
+            } finally {
+                switch (num) {
+                    case 1: userMenu.userMenu(); break;
+                    case 2: teamMenu.teamMenu(); break;
+                    case 3: matchMenu.matchMenu(); break;
+                    case 4: betMenu.betMenu(); break;
+                    case 0: end = !end; break;
+                    default: break;
+                }
             }
         }
-
         System.out.println("\nAplicação Finalizada!\n");
     }
 }

@@ -28,39 +28,19 @@ public class Match {
         return idMatch;
     }
 
-    public void setIdMatch(int idMatch) {
-        this.idMatch = idMatch;
-    }
-
     public Team getHomeTeam() {
         return homeTeam;
-    }
-
-    public void setHomeTeam(Team homeTeam) {
-        this.homeTeam = homeTeam;
     }
 
     public Team getAwayTeam() {
         return awayTeam;
     }
 
-    public void setAwayTeam(Team awayTeam) {
-        this.awayTeam = awayTeam;
-    }
-
     public String getStatus() {
         return this.status;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
     public int getWinner() {
         return winner;
-    }
-
-    public void setWinner(int winner) {
-        this.winner = winner;
     }
 }

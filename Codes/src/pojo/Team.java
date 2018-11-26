@@ -19,23 +19,12 @@ public class Team {
         return idTeam;
     }
 
-    public void setIdTeam(int idTeam) {
-        this.idTeam = idTeam;
-    }
 
     public String getNameTeam() {
         return nameTeam;
     }
 
-    public void setNameTeam(String nameTeam) {
-        this.nameTeam = nameTeam;
-    }
-
     public String getShortName() {
         return shortName;
-    }
-
-    public void setShortName(String shortName) {
-        this.shortName = shortName;
     }
 }

@@ -1,7 +1,7 @@
 package controllers;
 
 import dao.MatchDao;
-import dao.MatchTeamDado;
+import dao.MatchTeamDao;
 import pojo.Match;
 import pojo.Team;
 
@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class MatchController {
 
     public boolean addMatch(Team homeTeam, Team awayTeam) {
-        Match match = new Match(homeTeam, awayTeam, -1, "Agendado");
+        Match match = new Match(homeTeam, awayTeam, -1, "Agendada");
         return new MatchDao().addMatch(match);
     }
 
@@ -18,11 +18,16 @@ public class MatchController {
         return new MatchDao().deleteMatch(id);
     }
 
-    public ArrayList<Match> listMatches(){
-        return new MatchTeamDado().getListMatches();
+    public boolean updateMatch(int id, Team homeTeam, Team awayTeam, int winner, String status) {
+        Match match = new Match(id, homeTeam, awayTeam, winner, status);
+        return new MatchDao().updateMatch(match);
     }
 
-    public Team getMatchByTeamId(int idTeam) {
-        return null;//new //TeamDao().getTeamById(idTeam);
+    public ArrayList<Match> listMatches(){
+        return new MatchTeamDao().getListMatches();
+    }
+
+    public ArrayList<Match> getMatchByTeamId(int idTeam) {
+        return new MatchTeamDao().getMatchByTeamId(idTeam);
     }
 }

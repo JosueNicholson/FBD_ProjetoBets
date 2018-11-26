@@ -14,6 +14,11 @@ public class UserController {
         return new UserDao().addUser(user);
     }
 
+    public boolean updateUser(int idUser, String nameUser) {
+        User user = new User(idUser, nameUser);
+        return new UserDao().updateUser(user);
+    }
+
     public boolean deleteUser(int idUser) {
         return new UserDao().deleteUser(idUser);
     }

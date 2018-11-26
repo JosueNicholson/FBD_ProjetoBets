@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-public class MatchTeamDado {
+public class MatchTeamDao {
     private Connection connection;
 
     public ArrayList<Match> getListMatches(){
@@ -56,13 +56,15 @@ public class MatchTeamDado {
         return listMatches;
     }
 
-    public Match getMatcheByTeamId(){
-        String sql = "SELECT * FROM GETMATCHEBYTEAMID(?)";
+    public ArrayList<Match>  getMatchByTeamId(int idTeam){
+        String sql = "SELECT * FROM GETMATCHBYTEAMID(?)";
         ArrayList<Match> listMatches = new ArrayList<Match>();
         this.connection = new ConnectionFactory().getConnection();
 
         try {
             PreparedStatement stmt = connection.prepareStatement(sql);
+            stmt.setInt(1, idTeam);
+
             ResultSet rs = stmt.executeQuery();
 
             while(rs.next()) {
