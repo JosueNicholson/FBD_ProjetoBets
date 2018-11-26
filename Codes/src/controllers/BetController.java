@@ -10,10 +10,11 @@ import pojo.User;
 
 public class BetController {
 	public BetController() {}
-	public Bet addBet(int idUser) {
+	
+	public Bet addBet(int idUser, int idBet) {
 		UserController uc = new UserController();
 		User user = uc.getUserById(idUser);
-		Bet bet = new Bet(user);
+		Bet bet = new Bet(idBet, user);
 		if(new BetDao().addBet(bet)) {
 			return bet;
 		}

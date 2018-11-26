@@ -16,7 +16,7 @@ public class BetUserDao {
 	public BetUserDao() {}
 	
 	public ArrayList<Bet> getListBetsById(int idUser){
-		String sql = "SELECT * FROM BETS, USERS WHERE IDUSER = ?";
+		String sql = "SELECT * FROM BETS b, USERS u WHERE b.IDUSER=? and b.IDUSER = u.IDUSER ";
 		ArrayList<Bet> listBets = new ArrayList<Bet>();
 		this.connection = new ConnectionFactory().getConnection();
 		

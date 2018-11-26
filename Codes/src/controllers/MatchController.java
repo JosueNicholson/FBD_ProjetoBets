@@ -8,6 +8,8 @@ import pojo.Team;
 import java.util.ArrayList;
 
 public class MatchController {
+	
+	public MatchController() {}
 
     public boolean addMatch(Team homeTeam, Team awayTeam) {
         Match match = new Match(homeTeam, awayTeam, -1, "Agendada");
@@ -29,5 +31,8 @@ public class MatchController {
 
     public ArrayList<Match> getMatchByTeamId(int idTeam) {
         return new MatchTeamDao().getMatchByTeamId(idTeam);
+    }
+    public Match getMatchById(int idMatch) {
+    	return new MatchTeamDao().getMatchById(idMatch);
     }
 }

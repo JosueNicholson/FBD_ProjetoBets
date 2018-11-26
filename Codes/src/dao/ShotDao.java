@@ -14,6 +14,7 @@ public class ShotDao {
 	
 	public boolean addShot(Shot shot) {
 		String sql = "INSERT INTO SHOTS(IDBET, IDMATCH, WINNER) VALUES(?,?,?)";
+		this.connection = new ConnectionFactory().getConnection();
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			
@@ -56,6 +57,7 @@ public class ShotDao {
 			if(rowsAffected > 0) {
 				return true;
 			}
+			stmt.close();
 			return false;
 		}catch(SQLException e) {
 			System.err.println(e.getMessage());

@@ -16,13 +16,14 @@ public class BetDao {
 	public BetDao() {}
 	
 	public boolean addBet(Bet bet) {
-		String sql = "INSERT INTO BETS(IDUSER) VALUES(?)";
+		String sql = "INSERT INTO BETS (IDBET, IDUSER) VALUES (?,?)";
 		this.connection = new ConnectionFactory().getConnection();
 		
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			
-			stmt.setInt(1, bet.getUser().getIdUser());
+			stmt.setInt(1, bet.getIdBet());
+			stmt.setInt(2, bet.getUser().getIdUser());
 			
 			int rowsAffected = stmt.executeUpdate();
 			stmt.close();

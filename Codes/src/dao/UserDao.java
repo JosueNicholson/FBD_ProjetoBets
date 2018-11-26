@@ -143,17 +143,19 @@ public class UserDao {
 		return listUsers;
 	}
 	public User getUserById(int idUser) {
-		String sql = "SELECT * FROM USER WHERE IDUSER = ?";
+		String sql = "SELECT * FROM USERS WHERE IDUSER = ?";
 		this.connection = new ConnectionFactory().getConnection();
 		
 		try {
 			PreparedStatement stmt = connection.prepareStatement(sql);
 			stmt.setInt(1, idUser);
-			
 			ResultSet rs = stmt.executeQuery();
-			String nameUser = rs.getString("nameUser");
-			User user = new User(idUser, nameUser);
-			return user;
+			while(rs.next()) {
+				String nameUser = rs.getString("nameUser");
+				User user = new User(idUser, nameUser);
+				return user;
+			}
+			
 			
 		}catch(SQLException e) {
 			System.err.println(e.getMessage());
