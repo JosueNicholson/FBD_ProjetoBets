@@ -14,6 +14,11 @@ public class TeamController {
 		return new TeamDao().addTeam(team);
 	}
 
+	public boolean editTeam(int idTeam, String nameTeam, String shortName) {
+		Team team = new Team(idTeam, nameTeam, shortName);
+		return new TeamDao().editTeam(team);
+	}
+
 	public boolean deleteTeam(int id) {
 		return new TeamDao().deleteTeam(id);
 	}

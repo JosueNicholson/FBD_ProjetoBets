@@ -46,6 +46,41 @@ public class TeamDao {
 		}
 		return false;
 	}
+
+	public boolean editTeam(Team team) {
+		String sql = "UPDATE TEAMS SET IDTEAM=?, NAMETEAM=?, SHORTNAME=? WHERE IDTEAM=?";
+		this.connection = new ConnectionFactory().getConnection();
+
+		try {
+
+			PreparedStatement stmt = connection.prepareStatement(sql);
+
+			stmt.setInt(1, team.getIdTeam());
+			stmt.setString(2, team.getNameTeam());
+			stmt.setString(3, team.getShortName());
+			stmt.setInt(4, team.getIdTeam());
+
+			int rowsAffected = stmt.executeUpdate();
+			stmt.close();
+
+			if(rowsAffected>0) {
+				return true;
+			}
+			return false;
+
+		}catch(SQLException e) {
+			System.err.println(e.getMessage());
+		}finally {
+
+			try {
+				this.connection.close();
+			}catch(SQLException e){
+				e.printStackTrace();
+			}
+
+		}
+		return false;
+	}
 	
 	public boolean deleteTeam(int id) {
 		String sql = "DELETE FROM TEAMS WHERE IDTEAM = ?";
