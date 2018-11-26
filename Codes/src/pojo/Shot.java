@@ -1,24 +1,29 @@
 package pojo;
 
 public class Shot {
-    private Bet bet;
+    private int idBet;
     private int idShot;
     private Match match;
     private int winner;
 
-    public Shot(Bet bet, int idShot, Match match, int winner) {
-        this.bet = bet;
+    public Shot(int idBet, int idShot, Match match, int winner) {
+        this.idBet = idBet;
         this.idShot = idShot;
         this.match = match;
         this.winner = winner;
     }
-
-    public Bet getBet() {
-        return bet;
+    public Shot(int idBet, Match match, int winner) {
+        this.match = match;
+        this.winner = winner;
+        this.idBet = idBet;
     }
 
-    public void setBet(Bet bet) {
-        this.bet = bet;
+    public int getIdBet() {
+        return idBet;
+    }
+
+    public void setIdBet(int idBet) {
+        this.idBet = idBet;
     }
 
     public int getIdShot() {

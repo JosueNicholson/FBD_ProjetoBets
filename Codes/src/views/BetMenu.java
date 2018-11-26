@@ -40,8 +40,12 @@ public class BetMenu {
     	Scanner input = new Scanner(System.in);
     	System.out.println("Insira o id do usuario:");
     	int id = input.nextInt();
-    	if(betController.addBet(id)) {
-    		System.out.println("\n"); //PRECISA TERMINAR SHOTS E MATCHS PARA CONTINUAR...
+    	Bet bet = betController.addBet(id);
+    	if(bet!=null) {
+    		System.out.println("insira o id da partida:");
+    		int idMatch = input.nextInt();
+    		
+    		
     	}
     }
     public void deleteBetPrompt() {
