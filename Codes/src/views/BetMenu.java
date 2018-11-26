@@ -6,8 +6,10 @@ import java.util.Scanner;
 import controllers.BetController;
 import controllers.MatchController;
 import controllers.ShotController;
+import controllers.UserController;
 import pojo.Bet;
 import pojo.Shot;
+import pojo.User;
 
 public class BetMenu {
 	BetController betController;
@@ -46,7 +48,7 @@ public class BetMenu {
     	int idBet = input.nextInt();
     	Bet bet = betController.addBet(idUser, idBet);
     	if(bet!=null) {
-    		MenuShot(input, idUser);
+    		MenuShot(input, idBet);
     		int anotherShot = 1;
     		while(anotherShot==1) {
 	    		System.out.println("Deseja dar outro palpite?");
@@ -54,10 +56,13 @@ public class BetMenu {
 	    		System.out.println("1- Sim");
 	    		anotherShot = input.nextInt();
 	    		if(anotherShot==1) {
-	    			MenuShot(input, idUser);
+	    			MenuShot(input, idBet);
 	    		}
     		}
     		System.out.println("Aposta feita!");
+    	}
+    	else {
+    		System.out.println("Não foi possível adicionar. \nVerifique se o id do usuário e o id do bet que você inseriu estão corretos.");
     	}
     }
 	private void MenuShot(Scanner input, int idBet) {
@@ -116,6 +121,13 @@ public class BetMenu {
     	}
     }
     public void listUsersDidHitAShot() {
-    	
+    	UserController uc = new UserController();
+    	System.out.println("Insira um id de uma partida:");
+    	Scanner input = new Scanner(System.in);
+    	int idMatch = input.nextInt();
+    	ArrayList<User> listUsers = uc.getUsersWhoDidHitAShot(idMatch);
+    	for (User user : listUsers) {
+			System.out.println(user.getIdUser()+" "+user.getNameUser());
+		}
     }
 }

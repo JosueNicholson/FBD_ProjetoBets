@@ -1,5 +1,7 @@
 package controllers;
 
+import dao.UserBetShotMatchDao;
+import dao.UserBetShotMatchDao;
 import dao.UserDao;
 import pojo.User;
 
@@ -29,5 +31,8 @@ public class UserController {
     public User getUserById(int id) {
     	User user = new UserDao().getUserById(id);
     	return user;
+    }
+    public ArrayList<User> getUsersWhoDidHitAShot(int idMatch){
+    	return new UserBetShotMatchDao().getListUsersWhoDidHitAShot(idMatch);
     }
 }

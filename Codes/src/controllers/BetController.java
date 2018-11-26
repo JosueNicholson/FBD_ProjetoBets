@@ -14,6 +14,9 @@ public class BetController {
 	public Bet addBet(int idUser, int idBet) {
 		UserController uc = new UserController();
 		User user = uc.getUserById(idUser);
+		if(user==null) {
+			return null;
+		}
 		Bet bet = new Bet(idBet, user);
 		if(new BetDao().addBet(bet)) {
 			return bet;
